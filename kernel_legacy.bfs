@@ -1,0 +1,174 @@
+# BFOS shell: 16-character input, case-sensitive commands.
+ARRAY command 16
+CELL match
+CELL temp
+CELL scratch
+CELL output
+CELL shell_alive
+CELL unknown
+CELL copy_scratch
+GOTO output
+PRINTLN "BFOS v0.2 - type help"
+GOTO shell_alive
+SET 1
+LOOP
+GOTO output
+PRINT "> "
+READLINE command
+COPY command unknown copy_scratch
+GOTO match
+SET 1
+MATCHSTRING "help" command match temp scratch
+GOTOITEM command 4
+CHECKZERO match temp scratch
+GOTO match
+LOOP
+ZERO
+GOTO unknown
+ZERO
+GOTO output
+PRINTLN "help version about"
+PRINTLN "echo TEXT clear halt"
+END
+GOTO match
+SET 1
+MATCHSTRING "version" command match temp scratch
+GOTOITEM command 7
+CHECKZERO match temp scratch
+GOTO match
+LOOP
+ZERO
+GOTO unknown
+ZERO
+GOTO output
+PRINTLN "BFOS v0.2"
+END
+GOTO match
+SET 1
+MATCHSTRING "about" command match temp scratch
+GOTOITEM command 5
+CHECKZERO match temp scratch
+GOTO match
+LOOP
+ZERO
+GOTO unknown
+ZERO
+GOTO output
+PRINTLN "Brainfuck OS"
+PRINTLN "4096-byte tape; BIOS I/O"
+END
+GOTO match
+SET 1
+MATCHSTRING "clear" command match temp scratch
+GOTOITEM command 5
+CHECKZERO match temp scratch
+GOTO match
+LOOP
+ZERO
+GOTO unknown
+ZERO
+GOTO output
+SET 12
+OUT
+END
+GOTO match
+SET 1
+MATCHSTRING "echo" command match temp scratch
+GOTOITEM command 4
+CHECKZERO match temp scratch
+GOTO match
+LOOP
+ZERO
+GOTO unknown
+ZERO
+GOTO output
+PRINTLN ""
+END
+GOTO match
+SET 1
+MATCHSTRING "echo " command match temp scratch
+GOTO match
+LOOP
+ZERO
+GOTO unknown
+ZERO
+GOTOITEM command 5
+LOOP
+OUT
+ZERO
+END
+GOTOITEM command 6
+LOOP
+OUT
+ZERO
+END
+GOTOITEM command 7
+LOOP
+OUT
+ZERO
+END
+GOTOITEM command 8
+LOOP
+OUT
+ZERO
+END
+GOTOITEM command 9
+LOOP
+OUT
+ZERO
+END
+GOTOITEM command 10
+LOOP
+OUT
+ZERO
+END
+GOTOITEM command 11
+LOOP
+OUT
+ZERO
+END
+GOTOITEM command 12
+LOOP
+OUT
+ZERO
+END
+GOTOITEM command 13
+LOOP
+OUT
+ZERO
+END
+GOTOITEM command 14
+LOOP
+OUT
+ZERO
+END
+GOTOITEM command 15
+LOOP
+OUT
+ZERO
+END
+GOTO output
+PRINTLN ""
+END
+GOTO match
+SET 1
+MATCHSTRING "halt" command match temp scratch
+GOTOITEM command 4
+CHECKZERO match temp scratch
+GOTO match
+LOOP
+ZERO
+GOTO unknown
+ZERO
+GOTO output
+PRINTLN "Halted."
+GOTO shell_alive
+ZERO
+END
+GOTO unknown
+LOOP
+ZERO
+GOTO output
+PRINTLN "Unknown command"
+END
+END
